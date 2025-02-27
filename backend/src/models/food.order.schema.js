@@ -10,7 +10,7 @@ const foodOrderSchema = new Schema({
   address: String,
   //   user: { type: ObjectId },
   //   foodOrderItems: { type: foodOrderItem[] },
-  //   status: { type: foodOrderStatusEnum },
+    status: { type: string, enum:["PENDING", "CANCELED", "DELIVERED"] },
 });
 
 export const foodOrder = mongoose.model("Users", foodOrderSchema);
