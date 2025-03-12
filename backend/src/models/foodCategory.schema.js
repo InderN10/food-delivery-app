@@ -9,4 +9,4 @@ const foodCategorySchema = new Schema({
   updatedAt: { type: Date },
 });
 
-export const foodCategories = mongoose.model("Users", foodCategorySchema);
+export const foodCategories = mongoose.model("foodCategories", foodCategorySchema);
