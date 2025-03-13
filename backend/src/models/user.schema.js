@@ -10,6 +10,7 @@ const userSchema = new Schema({
   email: { type: String },
   password: { type: String },
   phoneNumber: { type: String },
+  address: { type: String },
   // role: { type: UserRole },
   // orderedFoods: { type: ObjectId },
   isVerified: { type: Boolean },
@@ -19,3 +20,4 @@ const userSchema = new Schema({
 });
 
 export const Users = mongoose.model("Users", userSchema);
+ 

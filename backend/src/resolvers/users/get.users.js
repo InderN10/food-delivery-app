@@ -1,15 +1,17 @@
 import { Users } from "../../models/user.schema.js";
 
 export const getUserRegisterById = async (req, res) => {
-//   const user = await Users.findById(req.params.id).populate("user");
-//   req.json({ user });
+ const { _id } = req.body;
   try {
-    const {mail} = req.body;
-    if(!mail){
-        const allUsers = await Users.find();
-        return res.status(200).json({users: allUsers})
+    const users = await Users.findById(_id);
+    if (!users) {
+      return res.status(404).json({ message: "User not found" });
     }
+    res.json({ users });
   } catch (err) {
-    console.log(err);
+    console.error(err);
+    res
+      .status(404)
+      .json({ message: "An error occurred while getting the user" });
   }
 };
