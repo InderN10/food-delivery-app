@@ -1,7 +1,4 @@
-
 import mongoose from "mongoose";
-
-
 
 const { Schema, model, models } = mongoose;
 
@@ -11,8 +8,12 @@ const userSchema = new Schema({
   password: { type: String },
   phoneNumber: { type: String },
   address: { type: String },
-  // role: { type: UserRole },
   // orderedFoods: { type: ObjectId },
+  role: {
+    type: String,
+    enum: ["USER", "ADMIN"],
+    default: "USER"
+  },
   isVerified: { type: Boolean },
   createdAt: { type: Date },
   updatedAt: { type: Date },
@@ -20,4 +21,3 @@ const userSchema = new Schema({
 });
 
 export const Users = mongoose.model("Users", userSchema);
- 

@@ -11,8 +11,10 @@ export const addFood = async (req, res) => {
       category
     });
     res.json({ massage: "succesfuly added food", food: newFood });
-  } catch (ere) {
+  } catch (err) {
     res.status(403).json({ message: "Error occured" });
+    console.log(err);
+    
   }
 };
 
