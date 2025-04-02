@@ -4,8 +4,8 @@ const { Schema, model, models } = mongoose;
 
 const userSchema = new Schema({
   id: { type: Schema.Types.ObjectId },
-  email: { type: String },
-  password: { type: String },
+  email: { type: String, unique: true },
+  password: { type: String, unique: true },
   phoneNumber: { type: String },
   address: { type: String },
   // orderedFoods: { type: ObjectId },

@@ -6,10 +6,10 @@ const validateEmail = (email) => {
 };
 
 
-const validatePhoneNumber = (phoneNumber) => {
-  const phoneRegex = /^\d{8}$/; 
-  return phoneRegex.test(phoneNumber);
-};
+// const validatePhoneNumber = (phoneNumber) => {
+//   const phoneRegex = /^\d{8}$/; 
+//   return phoneRegex.test(phoneNumber);
+// };
 
 const validatePassword = (password) => {
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
@@ -17,10 +17,10 @@ const validatePassword = (password) => {
 };
 
 export const userSignUp = async (req, res) => {
-  const { phoneNumber, password, email, address } = req.body;
+  const { password, email } = req.body;
 
 
-  if (!email || !password || !phoneNumber) {
+  if (!email || !password) {
     return res.status(400).json({ message: "All fields are required" });
   }
 
@@ -28,11 +28,11 @@ export const userSignUp = async (req, res) => {
     return res.status(400).json({ message: "Invalid email format" });
   }
 
-  if (!validatePhoneNumber(phoneNumber)) {
-    return res
-      .status(400)
-      .json({ message: "Invalid phone number format. Must be 10 digits." });
-  }
+  // if (!validatePhoneNumber(phoneNumber)) {
+  //   return res
+  //     .status(400)
+  //     .json({ message: "Invalid phone number format. Must be 10 digits." });
+  // }
 
   if (!validatePassword(password)) {
     return res
@@ -47,8 +47,8 @@ export const userSignUp = async (req, res) => {
     const newUser = await Users.create({
       email,
       password,
-      phoneNumber,
-      address,
+      // phoneNumber,
+      // address,
     });
     res.json({ message: "Successfully created account", user: newUser });
   } catch (error) {
